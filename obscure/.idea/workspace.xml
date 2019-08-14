@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="970d362e-8cae-4945-9d01-9eba3ef1a635" name="Default Changelist" comment="" />
+    <list default="true" id="970d362e-8cae-4945-9d01-9eba3ef1a635" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/venv/include/obscure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/include/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/include/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/include/ob_class.py" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,11 +15,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/include/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+            <state relative-caret-position="181">
+              <caret line="171" column="41" lean-forward="true" selection-end-line="206" selection-end-column="22" />
+              <folding>
+                <element signature="e#42#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/venv/include/obscure.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="177" column="36" lean-forward="true" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
               <folding>
                 <element signature="e#42#51#0" expanded="true" />
               </folding>
@@ -65,13 +82,7 @@
         <option value="$PROJECT_DIR$/venv/include/ob_class.py" />
         <option value="$USER_HOME$/Downloads/obscure_oc-master/ObscureObject-C.py" />
         <option value="$PROJECT_DIR$/venv/include/main.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/venv/include/obscure.py" />
       </list>
     </option>
   </component>
@@ -112,6 +123,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -133,29 +145,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="Confuse" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="obscure" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Downloads/Code-Confuse-Plugin-master" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Downloads/Code-Confuse-Plugin-master/Confuse.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.obscure">
     <configuration name="ObscureObject-C" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="obscure" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -222,6 +212,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="obscure" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="obscure" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/include" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/include/obscure.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="obscure" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -246,11 +258,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.obscure" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.ObscureObject-C" />
         <item itemvalue="Python.start" />
         <item itemvalue="Python.ob_class" />
-        <item itemvalue="Python.Confuse" />
       </list>
     </recent_temporary>
   </component>
@@ -266,12 +278,12 @@
       <updated>1565577587397</updated>
       <workItem from="1565577591703" duration="18738000" />
       <workItem from="1565660068574" duration="17106000" />
-      <workItem from="1565689903427" duration="56000" />
+      <workItem from="1565689903427" duration="399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35900000" />
+    <option name="totallyTimeSpent" value="36243000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="958" extended-state="0" />
@@ -352,8 +364,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/include/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+        <state relative-caret-position="181">
+          <caret line="171" column="41" lean-forward="true" selection-end-line="206" selection-end-column="22" />
+          <folding>
+            <element signature="e#42#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/include/obscure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="177" column="36" lean-forward="true" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
           <folding>
             <element signature="e#42#51#0" expanded="true" />
           </folding>
