@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ace63298-4d70-406a-aa56-e660a12c7299" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../binary_order_file/venv/include/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/include/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/include/main.py" afterDir="false" />
+    <list default="true" id="3ced084c-dbb4-4429-be6f-a9e1fea88b29" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/venv/include/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../packager/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packager/venv/include/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../packager/venv/include/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/include/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
+            <state relative-caret-position="1035">
+              <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
               <folding>
                 <element signature="e#42#51#0" expanded="true" />
               </folding>
@@ -36,12 +36,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>shutil</find>
-      <find>get_output_path</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -55,7 +49,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="956" />
+    <option name="height" value="958" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -63,35 +57,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="packager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -109,7 +80,7 @@
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="packager" />
+      <module name="binary_order_file" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -141,32 +112,31 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ace63298-4d70-406a-aa56-e660a12c7299" name="Default Changelist" comment="" />
-      <created>1565143859499</created>
+      <changelist id="3ced084c-dbb4-4429-be6f-a9e1fea88b29" name="Default Changelist" comment="" />
+      <created>1565835010947</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1565143859499</updated>
-      <workItem from="1565143864185" duration="10801000" />
-      <workItem from="1566437071692" duration="10776000" />
-      <workItem from="1567391203781" duration="9600000" />
-      <workItem from="1567565618732" duration="954000" />
-      <workItem from="1567646548981" duration="1398000" />
+      <updated>1565835010947</updated>
+      <workItem from="1565835014795" duration="30000" />
+      <workItem from="1565835069504" duration="4717000" />
+      <workItem from="1566436690060" duration="288000" />
+      <workItem from="1566784360841" duration="10163000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33529000" />
+    <option name="totallyTimeSpent" value="15198000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="956" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="958" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15384616" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12881564" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.03567182" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.066587396" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24436536" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -187,27 +157,27 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/packager$main.coverage" NAME="main Coverage Results" MODIFIED="1567664091226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/include" />
+    <SUITE FILE_PATH="coverage/binary_order_file$main.coverage" NAME="main Coverage Results" MODIFIED="1566982509435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/include" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/Cellar/python/3.7.4/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/re.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="324" selection-start-line="324" selection-end-line="324" />
+        <state relative-caret-position="186">
+          <caret line="181" column="11" selection-start-line="181" selection-start-column="6" selection-end-line="181" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/python/3.7.4/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/typing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="650" selection-start-line="650" selection-end-line="650" />
+        <state relative-caret-position="204">
+          <caret line="1504" column="8" selection-start-line="1504" selection-start-column="8" selection-end-line="1504" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/include/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
+        <state relative-caret-position="1035">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
           <folding>
             <element signature="e#42#51#0" expanded="true" />
           </folding>
