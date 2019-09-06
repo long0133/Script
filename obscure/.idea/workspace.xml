@@ -145,7 +145,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.obscure">
+  <component name="RunManager" selected="Python.main">
     <configuration name="ObscureObject-C" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="obscure" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -258,8 +258,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.obscure" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.obscure" />
         <item itemvalue="Python.ObscureObject-C" />
         <item itemvalue="Python.start" />
         <item itemvalue="Python.ob_class" />
@@ -316,7 +316,8 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/obscure$main.coverage" NAME="main Coverage Results" MODIFIED="1565689782982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/include" />
+    <SUITE FILE_PATH="coverage/obscure$obscure.coverage" NAME="obscure Coverage Results" MODIFIED="1567764349361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/include" />
+    <SUITE FILE_PATH="coverage/obscure$main.coverage" NAME="main Coverage Results" MODIFIED="1567764406285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/include" />
     <SUITE FILE_PATH="coverage/obscure$ObscureObject_C.coverage" NAME="ObscureObject-C Coverage Results" MODIFIED="1565678879314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/obscure_oc-master" />
     <SUITE FILE_PATH="coverage/obscure$ob_class.coverage" NAME="ob_class Coverage Results" MODIFIED="1565677704881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/include" />
     <SUITE FILE_PATH="coverage/obscure$start.coverage" NAME="start Coverage Results" MODIFIED="1565678265986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/iOSCodeDifferHelper-master" />
