@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/binary_order_file.iml" filepath="$PROJECT_DIR$/.idea/binary_order_file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../obscure/.idea/obscure.iml" filepath="$PROJECT_DIR$/../obscure/.idea/obscure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../packager/.idea/packager.iml" filepath="$PROJECT_DIR$/../packager/.idea/packager.iml" />
     </modules>
   </component>
 </project>

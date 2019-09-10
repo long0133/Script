@@ -5,14 +5,13 @@ import os
 import re
 import hashlib
 import random
-import pymysql
 import base64
 
 
 
 ################### Method Obscure ############################
 map = {}
-obscure_file_blacklist = ['SDKEntrance.h']  # 文件名黑名单 这些.h文件里的方法将不会被混淆
+obscure_file_blacklist = []  # 文件名黑名单 这些.h文件里的方法将不会被混淆
 obscure_method_keywords_blacklist = ['DEPRECATED_MSG_ATTRIBUTE','__deprecated_msg'] # 方法名关键字黑名单
 obscure_method_prefix = ['mo_','mc_','mp_','i_','p_','c_']  # 如有值则只修改带有这些前缀的方法
 brace_regex = r'\s?:\s?\([\w<>^()\*\s,]*\)\s?[\w]*'  # 正则匹配方法名中的如 (NSString *)pwd
@@ -28,7 +27,7 @@ def obscure_prepare(root_path):
         file_path = os.path.join(root_path, fn)
         if not os.path.isdir(file_path):
             # 非文件夹
-            if fn.endswith('.h'):
+            if fn.endswith('.h') or fn.endswith('.m'):
                 if fn in obscure_file_blacklist:
                     continue
                 with open(file_path, 'r+') as f:
@@ -36,6 +35,8 @@ def obscure_prepare(root_path):
                         if shoudl_obscure_method(line):
                             if re.match(find_method_name_regex, line):
                                 method_name = line.split(';')[0]
+                                method_name = method_name.split('{')[0]
+                                print(method_name)
                                 signature = get_methodsignature(method_name)
                                 for sub_sig in signature:
                                     make_diff_map(sub_sig)
@@ -260,7 +261,7 @@ def filename_obscure_prepare(root_path):
             if not fn in ignore_filename_list:
                 if fn.endswith('.h') or fn.endswith('.m'):
                     real_header_name = fn.split('.')[0]
-                    filename_ob_map[real_header_name] = obscure_class_name_()
+                    filename_ob_map[real_header_name] = obscure_class_name_(fn)
 
         else:
             filename_obscure_prepare(file_path)
@@ -392,8 +393,6 @@ def res_ob_pre(res_path):
     if os.path.isdir(res_path):
         file_list = os.listdir(res_path)
         for fn in file_list:
-            fn_without_suffix = fn.split('.')[0]
-            suffix = fn.split('.')[-1]
             if fn == res_maping_file_name:
                 sys_config_path = os.path.join(res_path, res_maping_file_name)
                 with open(sys_config_path,'r+') as f:
@@ -413,16 +412,32 @@ def res_ob_pre(res_path):
                     f.truncate()
                     f.write(file_content)
 
-            old_path = os.path.join(res_path,fn)
-            if fn_without_suffix in res_ob_map.keys():
-                new_path = os.path.join(res_path,res_ob_map[fn_without_suffix]+ '.' +suffix)
-                os.renames(old_path,new_path)
 
+def changeFileName(res_path):
+    if os.path.isdir(res_path):
+        file_list = os.listdir(res_path)
+        for fn in file_list:
+            fn_without_suffix = fn.split('.')[0]
+            suffix = fn.split('.')[-1]
+            old_path = os.path.join(res_path, fn)
+            if fn_without_suffix in res_ob_map.keys():
+                new_path = os.path.join(res_path, res_ob_map[fn_without_suffix] + '.' + suffix)
+                os.renames(old_path, new_path)
+
+def addGrabageFile(res_path):
+    # 无效资源
+    for i in range(0, 15):
+        random_file_name = obscure_class_name_('')
+        path = os.path.join(res_path, random_file_name + '.png')
+        with open(path, 'w+') as f:
+            f.write(ranstr(random.randint(300, 1000)))
 
 ######################################################################
 def res_ob():
     res_path = '/Users/guanzhenfa/Documents/工作/V6SDK美术素材/test'
     res_ob_pre(res_path)
+    changeFileName(res_path)
+    addGrabageFile(res_path)
 
 def method_ob():
     root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
@@ -460,6 +475,6 @@ def cleaning_up():
 if __name__ == '__main__':
     class_prefix = ranstr(random.randint(2, 4), True)
     # class_name_ob()
-    # method_ob()
+    method_ob()
     # string_ob()
-    res_ob()
+    # res_ob()

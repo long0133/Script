@@ -148,9 +148,6 @@ def recover_register_file(back_up_file_path,orig_register_file):
             re_file.write(line)
         temp.close()
 
-
-
-
 def combine():
     if sdk.lower() == 'both':
         sdkcore = 'SDKCore.framework/SDKCore'
