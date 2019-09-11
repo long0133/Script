@@ -36,7 +36,7 @@ def obscure_prepare(root_path):
                             if re.match(find_method_name_regex, line):
                                 method_name = line.split(';')[0]
                                 method_name = method_name.split('{')[0]
-                                print(method_name)
+                                # print(method_name)
                                 signature = get_methodsignature(method_name)
                                 for sub_sig in signature:
                                     make_diff_map(sub_sig)
@@ -173,6 +173,8 @@ def class_obscure_prepare(root_path):
                             if class_name.startswith('UI') or class_name.startswith('NS'):
                                 continue
                             if not class_name in ignore_list:
+                                if class_name == 'ModuleRegister':
+                                    print(class_name)
                                 class_map[class_name] = obscure_class_name_(class_name)
         else:
             class_obscure_prepare(file_path)
@@ -207,6 +209,38 @@ def class_obscure(root_path):
         else:
             class_obscure(file_path)
 
+import plistlib
+def package_plist_ob(root_path):
+    file_list = os.listdir(root_path)
+    for fn in file_list:
+        file_path = os.path.join(root_path, fn)
+        if not os.path.isdir(file_path):
+            if fn == 'package_config.plist':
+                with open(file_path,'rb') as f:
+                    root_object = plistlib.load(f)
+                    module_arr = root_object['Module']
+                    layer_arr = root_object['FunctionLayer']
+                    for index in range(0,len(layer_arr)):
+                        func_l = layer_arr[index]
+                        class_name = func_l['class_name']
+                        if class_name in class_map:
+                            ob_name = class_map[class_name]
+                            print(class_name + '    ' + ob_name)
+                            root_object['FunctionLayer'][index]['class_name'] = ob_name
+
+                    for index in range(0,len(module_arr)):
+                        module = module_arr[index]
+                        class_name = module['class_name']
+                        if class_name in class_map:
+                            ob_name = class_map[class_name]
+                            print(class_name + '    ' + ob_name)
+                            root_object['Module'][index]['class_name'] = ob_name
+
+                plistlib.writePlist(root_object, file_path)
+
+
+        else:
+            package_plist_ob(file_path)
 
 def extract_class_name(raw):
     raw = raw.split(':')[0]
@@ -454,6 +488,8 @@ def class_name_ob():
     class_obscure(root_path)
     save_map(root_path)
     print('结束混淆类名...')
+    package_plist_ob(root_path)
+
 
 def file_name_ob():
     root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
@@ -474,7 +510,7 @@ def cleaning_up():
 
 if __name__ == '__main__':
     class_prefix = ranstr(random.randint(2, 4), True)
-    # class_name_ob()
+    class_name_ob()
     method_ob()
-    # string_ob()
+    string_ob()
     # res_ob()

@@ -14,8 +14,9 @@ order_file_path = ''
 configuration = '' #从配置文件中读取,表示打包是Debug环境还是Release环境
 sdk = '' #从配置文件中读取,表示打包是用iphoneos还是iphonesimulator或者both
 output = '' #从配置文件中读取,打好的包将输出在这个文件夹里
-targets_info = {} #<target_name:header_name>
-register_file_name = 'ModuleRegister.h'
+targets_info = {} #<target_name:class name>
+target_names = {} #用于替换注册文件中的placeholder
+register_file_name = 'ModuleRegisterManager.h'
 register_backup_path = ''
 build_date = ''
 
@@ -111,19 +112,47 @@ def re_write_register_file(register_file_path):
         for line in template:
             #根据配置修改模块名
             if re.search(target_uicompoent,line):
-                line = re.sub(target_uicompoent,targets_info[target_uicompoent],line)
+                if re.search('#define',line):
+                    line = re.sub(target_uicompoent,targets_info[target_uicompoent],line)
+                elif re.search('import',line):
+                    line = re.sub(target_uicompoent, target_names[target_uicompoent], line)
+
             elif re.search(target_ui,line):
-                line = re.sub(target_ui,targets_info[target_ui],line)
+                if re.search('#define',line):
+                    line = re.sub(target_ui, targets_info[target_ui], line)
+                elif re.search('import',line):
+                    line = re.sub(target_ui, target_names[target_ui], line)
+
             elif re.search(target_register,line):
-                line = re.sub(target_register,targets_info[target_register],line)
+                if re.search('#define',line):
+                    line = re.sub(target_register, targets_info[target_register], line)
+                elif re.search('import',line):
+                    line = re.sub(target_register, target_names[target_register], line)
+
             elif re.search(target_network,line):
-                line = re.sub(target_network,targets_info[target_network],line)
+                if re.search('#define',line):
+                    line = re.sub(target_network, targets_info[target_network], line)
+                elif re.search('import',line):
+                    line = re.sub(target_network, target_names[target_network], line)
+
             elif re.search(target_storage,line):
-                line = re.sub(target_storage,targets_info[target_storage],line)
+                if re.search('#define',line):
+                    line = re.sub(target_storage, targets_info[target_storage], line)
+                elif re.search('import',line):
+                    line = re.sub(target_storage, target_names[target_storage], line)
+
             elif re.search(target_iap,line):
-                line = re.sub(target_iap,targets_info[target_iap],line)
+                if re.search('#define',line):
+                    line = re.sub(target_iap, targets_info[target_iap], line)
+                elif re.search('import',line):
+                    line = re.sub(target_iap, target_names[target_iap], line)
+
             elif re.search(target_login,line):
-                line = re.sub(target_login,targets_info[target_login],line)
+                if re.search('#define',line):
+                    line = re.sub(target_login, targets_info[target_login], line)
+                elif re.search('import',line):
+                    line = re.sub(target_login, target_names[target_login], line)
+
             temp.write(line)
         temp.close()
         back_up.close()
@@ -182,13 +211,28 @@ if __name__ == '__main__':
         elif configuration.lower() == 'release':
             configuration = 'Release'
 
-        #function layer
+
+        for func_l in layer_dict:
+            class_name = func_l['class_name']
+            target_name = func_l['target_name']
+            key = func_l['placeholder']
+            targets_info[key] = class_name
+            target_names[key] = target_name
+
+        for module in module_dict:
+            class_name = module['class_name']
+            target_name = module['target_name']
+            key = module['placeholder']
+            targets_info[key] = class_name
+            target_names[key] = target_name
+
+        register_backup_path, orig_register_file = re_write_register_file(register_temp_file_path)
+
+        # function layer
         for func_l in layer_dict:
             proj_name = func_l['project_name']
             proj_path = func_l['project_path']
             target_name = func_l['target_name']
-            key = func_l['placeholder']
-            targets_info[key] = target_name
             package(proj_name, proj_path, target_name,output)
             print('func_l: %s %s %s'%(proj_name, proj_path, target_name))
 
@@ -197,12 +241,9 @@ if __name__ == '__main__':
             proj_name = module['project_name']
             proj_path = module['project_path']
             target_name = module['target_name']
-            key = module['placeholder']
-            targets_info[key] = target_name
             package(proj_name, proj_path, target_name,output)
             print('module: %s %s %s' % (proj_name, proj_path, target_name))
 
-        register_backup_path,orig_register_file = re_write_register_file(register_temp_file_path)
 
 
         #core
