@@ -48,6 +48,7 @@ def obscure_prepare(root_path):
 
 # 遍历.m文件 根据map里的key value进行文件里 方法实现的混淆 以及方法调用的混淆
 def obscure(root_path):
+    return
     file_list = os.listdir(root_path)
     for fn in file_list:
         file_path = os.path.join(root_path, fn)
@@ -135,6 +136,7 @@ def get_methodsignature(method_name):
 class_map = {}
 interface_regex = r'[\s]*@interface+[\s]*[_a-zA-Z]+([\s]+)'
 ignore_list = ['AppDelegate', 'ViewController','SDKEntrance'] #不需要混淆的类名
+ignore_dir_list = ['module_ui_three_724']
 class_prefix = ''
 ranDomName1 = ['ZYH', 'ZYH', 'ZYH', 'ZYH', 'ZYH', 'ZYH', 'COA', 'COA', 'COA', 'COA', 'COA', 'COA', 'NES', 'NES',
                 'LOM', 'LOM', 'LOM', 'LOM', 'MEE', 'MEE', 'MEE']
@@ -163,6 +165,8 @@ ranDomName4 = ['Singleton', 'Logger', 'Order', 'Person', 'Comp', 'Resp', '1', '2
 def class_obscure_prepare(root_path):
     file_list = os.listdir(root_path)
     for fn in file_list:
+        if fn in ignore_dir_list:
+            continue
         file_path = os.path.join(root_path, fn)
         if not os.path.isdir(file_path):
             if fn.endswith('.h'):
@@ -348,7 +352,8 @@ def filename_obscure(root_path):
 string_regex = r'(@"){1}(.*)("){1}'
 allow_string_ob_filename = ['Macro.h']
 key_in_file = 'StorageProtocol.h' #ios 工程中定义了magic_number的文件, 在混淆时 需要根据magic_number更改工程中的magic_number值
-magic_number = 'Ajjh87=='
+magic_number = '0xaa'
+chinese_regex = r'[\u4E00-\u9FA5]{1,}'
 
 def string_obscure_encrypt(root_path):
     filelist = os.listdir(root_path)
@@ -366,8 +371,9 @@ def string_obscure_encrypt(root_path):
                         #混淆提取的字符串
                         match = re.search(string_regex,line)
                         if match:
-                            ob = xor_encrypt(match.group(),magic_number)
-                            line = re.sub(string_regex,'@"%s"'%ob,line)
+                            if not re.search(chinese_regex,match.group()):
+                                ob = xor_encrypt(match.group(),magic_number)
+                                line = re.sub(string_regex,'%s'%ob,line)
                         file_content += line
                     f.seek(0)
                     f.truncate()
@@ -389,6 +395,24 @@ def string_obscure_encrypt(root_path):
 
 def string_obscure_decrypt(root_path):
     pass
+
+# def xor_encrypt(tips,key):
+#
+#     tips = tips.split('"')[1]
+#     lkey = len(key)
+#     secret = []
+#     num = 0
+#     for each in tips:
+#         if num >= lkey:
+#             num = num % lkey
+#         char = (str(ord(each) ^ ord(key[num])))
+#         secret.append(char)
+#         num += 1
+#     ob_bytes = "(char []) "
+#     ob_bytes += '{' + ','.join(secret) + '}'
+#     ob_bytes = '( ' + ob_bytes + ' )'
+#     print(ob_bytes)
+#     return ob_bytes
 
 def xor_encrypt(tips,key):
 
@@ -510,7 +534,7 @@ def cleaning_up():
 
 if __name__ == '__main__':
     class_prefix = ranstr(random.randint(2, 4), True)
-    class_name_ob()
+    # class_name_ob()
     method_ob()
-    string_ob()
-    # res_ob()
+    # string_ob()
+    res_ob()

@@ -8,6 +8,8 @@ import shutil
 import datetime
 
 config_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK/package_config.plist' #配置文件路径
+sdk_helper_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK/SDKHelper（汇总版）的副本.m' #sdkhelper 的文件路径
+
 iphoneos = 'iphoneos'
 iphonesimulator = 'iphonesimulator'
 order_file_path = ''
@@ -245,7 +247,6 @@ if __name__ == '__main__':
             print('module: %s %s %s' % (proj_name, proj_path, target_name))
 
 
-
         #core
         proj_name = core_dict['project_name']
         proj_path = core_dict['project_path']
@@ -255,4 +256,6 @@ if __name__ == '__main__':
 
         combine()
         recover_register_file(register_backup_path,orig_register_file)
+        shutil.copy(sdk_helper_path,output)
+
         os.system('open %s'%output)
