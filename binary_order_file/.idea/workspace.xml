@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ced084c-dbb4-4429-be6f-a9e1fea88b29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../obscure/venv/include/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../obscure/venv/include/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../obscure/venv/include/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+            <state relative-caret-position="133">
+              <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
               <folding>
                 <element signature="e#42#51#0" expanded="true" />
               </folding>
@@ -236,12 +235,12 @@
       <workItem from="1566784360841" duration="10163000" />
       <workItem from="1567993483121" duration="11551000" />
       <workItem from="1568100649766" duration="21621000" />
-      <workItem from="1568683539130" duration="9641000" />
+      <workItem from="1568683539130" duration="10023000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58011000" />
+    <option name="totallyTimeSpent" value="58393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="958" extended-state="0" />
@@ -322,8 +321,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../obscure/venv/include/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        <state relative-caret-position="133">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding>
             <element signature="e#42#51#0" expanded="true" />
           </folding>

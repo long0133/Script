@@ -11,7 +11,6 @@ import base64
 ignore_dir_list = ['module_ui_three_724','miniZip']
 ################### Method Obscure ############################
 map = {}
-obscure_file_blacklist = []  # 文件名黑名单 这些.h文件里的方法将不会被混淆
 obscure_method_keywords_blacklist = ['DEPRECATED_MSG_ATTRIBUTE','__deprecated_msg','mp_postRequestURL:','mp_getRequestURL:','i_registerEntranceWithPreparation:'] # 方法名关键字黑名单
 obscure_method_prefix = ['mo_','mc_','mp_','i_','p_','c_']  # 如有值则只修改带有这些前缀的方法
 brace_regex = r'\s?\([\w<>^()\*\s,]*\)\s?[\w]*'  # 正则匹配方法名中的如 (NSString *)pwd
@@ -32,8 +31,6 @@ def obscure_prepare(root_path):
         if not os.path.isdir(file_path):
             # 非文件夹
             if fn.endswith('.h') or fn.endswith('.m'):
-                if fn in obscure_file_blacklist:
-                    continue
                 with open(file_path, 'r+') as f:
                     for line in f:
                         if shoudl_obscure_method(line):
@@ -62,8 +59,6 @@ def obscure(root_path):
             # 非文件夹
             if fn.endswith('.m') or fn.endswith('.h'):
                 # .m文件
-                # if fn in obscure_file_blacklist:
-                #     continue
                 with open(file_path, 'r+') as f:
                     temp_file_path = get_temp_file_path(root_path, fn)
                     temp_file_paths_arr.append(temp_file_path) #保存临时文件的地址,以便后续删除
