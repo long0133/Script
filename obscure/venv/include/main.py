@@ -8,15 +8,17 @@ import random
 import base64
 
 
-
+ignore_dir_list = ['module_ui_three_724','miniZip']
 ################### Method Obscure ############################
 map = {}
 obscure_file_blacklist = []  # 文件名黑名单 这些.h文件里的方法将不会被混淆
-obscure_method_keywords_blacklist = ['DEPRECATED_MSG_ATTRIBUTE','__deprecated_msg'] # 方法名关键字黑名单
+obscure_method_keywords_blacklist = ['DEPRECATED_MSG_ATTRIBUTE','__deprecated_msg','mp_postRequestURL:','mp_getRequestURL:','i_registerEntranceWithPreparation:'] # 方法名关键字黑名单
 obscure_method_prefix = ['mo_','mc_','mp_','i_','p_','c_']  # 如有值则只修改带有这些前缀的方法
-brace_regex = r'\s?:\s?\([\w<>^()\*\s,]*\)\s?[\w]*'  # 正则匹配方法名中的如 (NSString *)pwd
+brace_regex = r'\s?\([\w<>^()\*\s,]*\)\s?[\w]*'  # 正则匹配方法名中的如 (NSString *)pwd
 find_invoke_regex = r'\[.*\];'  # 查找匹配方法的调用
-find_method_name_regex = r'(\+|-)\s(\(.*\))(.*)(\{|\s)'  # 查找方法名
+find_method_name_regex = r'(\+|-)\s(\(.*\))(.*)(\{|\s)'# 查找方法名
+find_method_first_name_in_m_regex = r'(\)|\s|\.)(i_|p_|c_|mo_|mc_|mp_){1}[a-zA-Z0-9]*' #查找.m文件中的可以混淆的方法的第一段
+find_block = r'[a-zA-Z0-9]*:\^\s?\('
 method_verify_regex = r'[a-zA-Z0-9_]*'
 temp_file_paths_arr = [] #临时文件的数组
 
@@ -24,6 +26,8 @@ temp_file_paths_arr = [] #临时文件的数组
 def obscure_prepare(root_path):
     file_list = os.listdir(root_path)
     for fn in file_list:
+        if fn in ignore_dir_list:
+            continue
         file_path = os.path.join(root_path, fn)
         if not os.path.isdir(file_path):
             # 非文件夹
@@ -48,24 +52,34 @@ def obscure_prepare(root_path):
 
 # 遍历.m文件 根据map里的key value进行文件里 方法实现的混淆 以及方法调用的混淆
 def obscure(root_path):
-    return
     file_list = os.listdir(root_path)
     for fn in file_list:
+        if fn in ignore_dir_list:
+            continue
         file_path = os.path.join(root_path, fn)
         if not os.path.isdir(file_path):
             # print('处理文件: ' + fn)
             # 非文件夹
             if fn.endswith('.m') or fn.endswith('.h'):
                 # .m文件
+                # if fn in obscure_file_blacklist:
+                #     continue
                 with open(file_path, 'r+') as f:
                     temp_file_path = get_temp_file_path(root_path, fn)
                     temp_file_paths_arr.append(temp_file_path) #保存临时文件的地址,以便后续删除
                     temp = open(temp_file_path, 'w+',encoding='utf-8',errors='ignore')
                     for line in f:
                         if shoudl_obscure_method(line):
-                            for k,v in map.items():
-                                if len(k) != 0 and re.search(k,line):
-                                    line = re.sub(k,v,line)
+                            first_match = re.search(find_method_first_name_in_m_regex,line)
+                            if first_match:
+                                allow_flag = True
+                                for black_key in obscure_method_keywords_blacklist:
+                                    if re.search(black_key, line):
+                                        allow_flag = False
+                                if allow_flag:
+                                    for k,v in map.items():
+                                        if len(k) != 0 and k != ':' and re.search(k,line):
+                                            line = re.sub(k,v,line)
                         temp.write(line)
                     temp.close()
 
@@ -109,6 +123,8 @@ def make_diff_map(signature):
         ob = ob.lower()
         ob = ob + ranDomName3[random.randint(0, 60) % len(ranDomName3)]
         ob = ob + ranDomName4[random.randint(0, 60) % len(ranDomName4)]
+    if re.search(':',signature):
+        ob = ob + ':'
     map[signature] = ob
     return ob
 
@@ -122,21 +138,22 @@ def get_methodsignature(method_name):
 
     method_name = method_name.split(')', 1)[-1]
     signature = re.sub(brace_regex, ' ', method_name).strip()
-    signature = re.sub(':', '',signature)
     sig = signature.split(' ')
     #目前仅取第一部分的签名
     first_part = sig[0]
     for prefix in obscure_method_prefix:
         if re.match(prefix,first_part):
-            return [first_part]
+            # return [first_part]
+            return sig
     return []
+
 
 
 ################### ClassName Obscure ############################
 class_map = {}
 interface_regex = r'[\s]*@interface+[\s]*[_a-zA-Z]+([\s]+)'
 ignore_list = ['AppDelegate', 'ViewController','SDKEntrance'] #不需要混淆的类名
-ignore_dir_list = ['module_ui_three_724']
+
 class_prefix = ''
 ranDomName1 = ['ZYH', 'ZYH', 'ZYH', 'ZYH', 'ZYH', 'ZYH', 'COA', 'COA', 'COA', 'COA', 'COA', 'COA', 'NES', 'NES',
                 'LOM', 'LOM', 'LOM', 'LOM', 'MEE', 'MEE', 'MEE']
@@ -187,6 +204,8 @@ def class_obscure_prepare(root_path):
 def class_obscure(root_path):
     file_list = os.listdir(root_path)
     for fn in file_list:
+        if fn in ignore_dir_list:
+            continue
         file_path = os.path.join(root_path, fn)
         if not os.path.isdir(file_path):
             if fn.endswith('.h') or fn.endswith('.m'):
