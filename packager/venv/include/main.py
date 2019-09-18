@@ -8,7 +8,7 @@ import shutil
 import datetime
 
 config_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK/package_config.plist' #配置文件路径
-sdk_helper_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK/SDKHelper（汇总版）的副本.m' #sdkhelper 的文件路径
+sdk_helper_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK/SDKHelper(1).m' #sdkhelper 的文件路径
 
 iphoneos = 'iphoneos'
 iphonesimulator = 'iphonesimulator'

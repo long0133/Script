@@ -8,7 +8,8 @@ import random
 import base64
 
 
-ignore_dir_list = ['module_ui_three_724','miniZip']
+ignore_dir_list = ['module_ui_three_724','miniZip','Flutter.framework']
+
 ################### Method Obscure ############################
 map = {}
 obscure_method_keywords_blacklist = ['DEPRECATED_MSG_ATTRIBUTE','__deprecated_msg','mp_postRequestURL:','mp_getRequestURL:','i_registerEntranceWithPreparation:'] # 方法名关键字黑名单
@@ -134,7 +135,6 @@ def get_methodsignature(method_name):
     method_name = method_name.split(')', 1)[-1]
     signature = re.sub(brace_regex, ' ', method_name).strip()
     sig = signature.split(' ')
-    #目前仅取第一部分的签名
     first_part = sig[0]
     for prefix in obscure_method_prefix:
         if re.match(prefix,first_part):
@@ -295,7 +295,7 @@ def ranstr(num,uppercase=False):
         salt += random.choice(H)
 
     return salt
-################### fileName Obscure ############################
+################### fileName Obscure 未完成 ############################
 ignore_filename_list = ['ModuleRegister.h','ModuleRegister.m',
                         'register_backup.h','register_temp.h',
                         'ViewController.h','ViewController.m',
@@ -387,7 +387,7 @@ def string_obscure_encrypt(root_path):
                         if match:
                             if not re.search(chinese_regex,match.group()):
                                 ob = xor_encrypt(match.group(),magic_number)
-                                line = re.sub(string_regex,'%s'%ob,line)
+                                line = re.sub(string_regex,'@"%s"'%ob,line)
                         file_content += line
                     f.seek(0)
                     f.truncate()
@@ -505,6 +505,8 @@ def addGrabageFile(res_path):
             f.write(ranstr(random.randint(300, 1000)))
 
 ######################################################################
+root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
+
 def res_ob():
     res_path = '/Users/guanzhenfa/Documents/工作/V6SDK美术素材/test'
     res_ob_pre(res_path)
@@ -512,14 +514,14 @@ def res_ob():
     addGrabageFile(res_path)
 
 def method_ob():
-    root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
+    print('方法名混淆准备...')
     obscure_prepare(root_path)
     obscure(root_path)
+    print('结束混淆方法名...')
     cleaning_up()
 
 
 def class_name_ob():
-    root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
     print('类名混淆准备...')
     class_obscure_prepare(root_path)
     print('开始混淆类名...')
@@ -530,14 +532,12 @@ def class_name_ob():
 
 
 def file_name_ob():
-    root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
     filename_obscure_prepare(root_path)
     print(filename_ob_map)
     filename_obscure(root_path)
     cleaning_up()
 
 def string_ob():
-    root_path = '/Users/guanzhenfa/Documents/company_git/iOS_RandomSDK'
     print('开始加密字符串...')
     string_obscure_encrypt(root_path)
     print('结束加密字符串...')
@@ -548,7 +548,7 @@ def cleaning_up():
 
 if __name__ == '__main__':
     class_prefix = ranstr(random.randint(2, 4), True)
-    # class_name_ob()
+    class_name_ob()
     method_ob()
     # string_ob()
-    res_ob()
+    # res_ob()
